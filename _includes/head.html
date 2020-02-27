@@ -1,0 +1,49 @@
+<head>
+  {%- include ga.html -%}
+  <title>{{ page.title }}</title>
+  <meta charset="utf-8">
+{% if page.type == 'blog' %}
+  <meta name="description" content="{{ page.description }}">
+{% else %}
+  <meta name="description" content="Notarise files and documents using the Ethereum blockchain">
+{% endif %}
+  <meta name="keywords" content="Notary,notarisation,blockchain,ethereum">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href="/assets/css/freelancer.css" rel="stylesheet">
+  <link href="/assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ <!-- Custom Fonts -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+{% if page.type == 'blog' %}
+  <!-- Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  <meta property="og:description" content="{{ page.description }}" />
+  <meta property="article:published_time" content="{{ page.date }}" />
+  <meta property="article:author" content="Nottario" />
+  <meta property="og:site_name" content="Nottario" />
+  <meta property="og:image" content="{{ site.url }}{{ page.image }}" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="{{ site.twitter }}" />
+  <meta name="twitter:title" content=" {{ page.title }}" />
+  <meta name="twitter:description" content="{{ page.description}}" />
+  <meta name="twitter:creator" content="{{ site.twitter }}" />
+
+  <!-- Google + -->
+  <meta itemprop="name" content="{{ page.title }}">
+  <meta itemprop="description" content="{{ page.description }}">
+  <meta itemprop="image" content="{{ site.url }}{{ page.image }}">
+
+{% endif %} 
+
+</head>
+
+
