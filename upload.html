@@ -1,0 +1,115 @@
+---
+layout: minimal
+title: Nottario
+---
+
+<script>
+  var u = "{{ site.upload_url }}"
+
+  function allowDrop(ev) {
+    ev.preventDefault();
+    app.dragging = true;
+    $("#drop_zone").addClass("dragging");
+  }
+
+  function dragout(ev) {
+    console.log('drag out');
+    app.dragging=false;
+    $("#drop_zone").removeClass("dragging");
+  }
+
+  function drop_handler(ev) {
+    console.log("Drop");
+    $("#drop_zone").removeClass("dragging");
+    ev.preventDefault();
+    console.log('ev is', ev);
+    var f = ev.dataTransfer.files[0];
+    $("#drop_zone").hide()
+    $("#dropped").show()
+    var reader = new FileReader();
+    reader.onload = function(event) {
+      console.log('onload!',event);
+      console.log(typeof event.target.result);
+
+      var metadata = {
+        "name":f.name
+      }
+      console.log(metadata);
+
+      uploadForm(f, metadata).then(function(id) {
+    
+        console.log('The id we need to poll is', id);
+        window.location = "upload_success.html?"+id   //bounce to success page and start polling for ipfs url
+      });
+    }
+
+    reader.readAsText(f);
+  }
+
+  // upload a file to S3 using a pre-signed URL
+  function uploadForm(f, metadata) {
+    console.log('@@uploadForm');
+    var id = null;
+
+    // get me a pre-signed URL
+    return getURL(metadata).then(function(data) {
+      id = data.id
+
+      // make a PUT request to upload the file
+      var req = {
+        method: 'PUT',
+        body: f,
+        headers: new Headers({
+          'Content-Type': f.type
+        })
+      };
+      return fetch(data.url, req);
+    }).then(function(data) { 
+      // success
+      console.log('Uploaded')
+      return id;
+    }).catch(function(){ 
+      console.log('Failed');
+    });
+  }
+
+
+  function getQueryString(params) {
+    return Object.keys(params)
+      .map(function(k) {  
+        return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
+      }).join('&');
+  }
+
+  var getURL=function(metadata) {
+
+    var url = u + '?' + getQueryString(metadata);
+    console.log('full url', url);
+    return fetch(url).then(function(data) {
+      var j = data.json()      
+      console.log('success', j)
+      return j;
+    }).catch(function(error) {
+      console.log('error', error);
+    });
+  }
+
+</script>
+
+<p>
+To upload a file to the <a href="https://ipfs.io/" target="_new">IPFS</a>, drag and drop a file into the drop zone or choose
+a file from your computer.
+</p>
+
+<p><b>Warning: the IPFS is a distributed file sharing system that is open to everyone. Once you upload a file, it cannot
+be deleted. Make sure you are happy for the contents of your file to be publicly accessible forever.</b></p>
+
+<div id="drop_zone" ondrop="drop_handler(event);" ondragover="allowDrop(event)" ondragleave="dragout(event)">
+  <h3 class="text-center">Drag and drop a file here, or...</h3>
+   <div class="text-center">
+     <input class="btn btn-secondary" type="file" id="fileselect" name="fileselect" onchange="onFileSelect(this)">
+   </div>
+</div>
+<div id="dropped" class="hidden">
+  <p>Uploading...</p>
+</div>
