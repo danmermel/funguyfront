@@ -63,6 +63,8 @@ title: Nottario
           'Content-Type': f.type
         })
       };
+      console.log("request is ", req)
+      console.log("url is data.url")
       return fetch(data.url, req);
     }).then(function(data) { 
       // success
