@@ -13,10 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+baseurl: ""
+title: Funguy
+upload_url: https://u0w7zfpnti.execute-api.eu-west-1.amazonaws.com/prod/nottarioFiats3Upload
 
-title: Fun Guy
-baseurl: /funguyfront
-upload_url: https://tdf6krcvy7.execute-api.eu-west-1.amazonaws.com/prod/s3upload
-
-
-theme: jekyll-theme-minimal
