@@ -13,15 +13,10 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-host: 0.0.0.0
-title: Nottario
+
+title: Fun Guy
 baseurl: /funguyfront
-email: your-email@example.com
-twitter: "@nottar_io"
-success_url: https://nottar.io/success.html
-error_url: https://nottar.io/error.html
 upload_url: https://tdf6krcvy7.execute-api.eu-west-1.amazonaws.com/prod/s3upload
-ipfs_check: https://u0w7zfpnti.execute-api.eu-west-1.amazonaws.com/prod/nottarioFiatipfsCheck
 
 
 theme: jekyll-theme-minimal
