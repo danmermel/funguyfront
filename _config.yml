@@ -22,3 +22,6 @@ success_url: https://nottar.io/success.html
 error_url: https://nottar.io/error.html
 upload_url: https://tdf6krcvy7.execute-api.eu-west-1.amazonaws.com/prod/s3upload
 ipfs_check: https://u0w7zfpnti.execute-api.eu-west-1.amazonaws.com/prod/nottarioFiatipfsCheck
+
+
+theme: jekyll-theme-minimal
