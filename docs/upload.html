@@ -1,6 +1,6 @@
 ---
 layout: minimal
-title: Nottario
+title: FunGuy
 ---
 
 <script>
@@ -39,7 +39,7 @@ title: Nottario
       uploadForm(f, metadata).then(function(id) {
     
         console.log('The id we need to poll is', id);
-        window.location = "upload_success.html?"+id   //bounce to success page and start polling for ipfs url
+        window.location = "upload_success.html?" //bounce to success page 
       });
     }
 
@@ -100,12 +100,10 @@ title: Nottario
 </script>
 
 <p>
-To upload a file to the <a href="https://ipfs.io/" target="_new">IPFS</a>, drag and drop a file into the drop zone or choose
-a file from your computer.
+Use the form below to upload a zip file containing all your images for processing.
 </p>
 
-<p><b>Warning: the IPFS is a distributed file sharing system that is open to everyone. Once you upload a file, it cannot
-be deleted. Make sure you are happy for the contents of your file to be publicly accessible forever.</b></p>
+<p>The upload needs to be a <b>.zip</b> folder containing only the images (no subfolders).</p>
 
 <div id="drop_zone" ondrop="drop_handler(event);" ondragover="allowDrop(event)" ondragleave="dragout(event)">
   <h3 class="text-center">Drag and drop a file here, or...</h3>
