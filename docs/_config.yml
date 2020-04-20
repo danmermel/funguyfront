@@ -13,6 +13,6 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Funguy
+title: 3D Object Generator
 upload_url:  https://tdf6krcvy7.execute-api.eu-west-1.amazonaws.com/prod/s3upload
 
